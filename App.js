@@ -10,16 +10,14 @@ import MainScreen from './Apps/Screen/MainScreen';
 
 
 const App=()=>{
-  const[name,setNane]=useState()
-  const[data,setdata]=useState(0)
+  const[name,setNane]=useState(null)
+  // const[data,setdata]=useState(0)
 
 
   useEffect(()=>{
-    //founduser()
-    AsyncStorage.clear()
-    //setdata(1)
+    founduser()
     
-  },[data]);
+  },[]);
   
   const founduser=async()=>{
     const value = await AsyncStorage.getItem("username");
@@ -28,7 +26,7 @@ const App=()=>{
     }
   };
 
-   if(name==null) return <Intro/>;
+   if(name==null) return <Intro onClick={setNane}/>;
     return <MainScreen name={name}/>;
 };
 
