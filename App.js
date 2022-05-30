@@ -13,6 +13,9 @@ const App=()=>{
   const[name,setNane]=useState(null)
   // const[data,setdata]=useState(0)
 
+  function nishi(){
+    console.log("wow you are great")
+  }
 
   useEffect(()=>{
     founduser()
