@@ -4,6 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 
 import Search from '../Components/Search'
+import Noteinput from '../Components/Noteinput';
 
  const MainScreen=(props)=> {
      const [greet,Setgreet]=useState()
@@ -31,6 +32,7 @@ import Search from '../Components/Search'
         <Text style={styles.notes}>Add Note</Text>
         <Icon name='plus-circle' size={60} color='#dbb2ff' style={styles.plus} onPress={addnote} />
       </View>
+      <Noteinput visible={true}/>
     </View>
   )
 }
