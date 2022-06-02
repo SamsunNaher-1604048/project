@@ -1,8 +1,5 @@
 import React,{useEffect,useState}  from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  View,
-} from 'react-native';
 
 import Intro from './Apps/Screen/Intro';
 import MainScreen from './Apps/Screen/MainScreen';
@@ -11,10 +8,9 @@ import MainScreen from './Apps/Screen/MainScreen';
 
 const App=()=>{
   const[name,setNane]=useState(null)
-  
+ 
   useEffect(()=>{
     founduser()
-    
   },[]);
   
   const founduser=async()=>{
@@ -24,7 +20,7 @@ const App=()=>{
     }
   };
 
-   if(name==null) return <Intro onClick={setNane}/>;
+   if(name==null) return <Intro userfound={founduser}/>;
     return <MainScreen name={name}/>;
 };
 
