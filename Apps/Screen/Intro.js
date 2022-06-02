@@ -5,7 +5,7 @@ import {
   
 import Round from '../Components/Round';
 
-const Intro=({onClick})=>{
+const Intro=({userfound})=>{
     const[user,setuser]=useState('');
 
     const onchange=(text)=>{
@@ -15,7 +15,7 @@ const Intro=({onClick})=>{
 
     const submit=async()=>{
        await AsyncStorage.setItem("username",user)
-       onClick(user)
+       userfound()
     }
 
 

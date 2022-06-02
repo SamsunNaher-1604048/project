@@ -11,15 +11,11 @@ import MainScreen from './Apps/Screen/MainScreen';
 
 const App=()=>{
   const[name,setNane]=useState(null)
-  // const[data,setdata]=useState(0)
-
-  function nishi(){
-    console.log("wow you are great")
-  }
+  
 
   useEffect(()=>{
     founduser()
-    
+    //AsyncStorage.clear(); 
   },[]);
   
   const founduser=async()=>{
@@ -29,7 +25,7 @@ const App=()=>{
     }
   };
 
-   if(name==null) return <Intro onClick={setNane}/>;
+   if(name==null) return <Intro userfound={founduser}/>;
     return <MainScreen name={name}/>;
 };
 
