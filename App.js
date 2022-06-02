@@ -8,8 +8,7 @@ import MainScreen from './Apps/Screen/MainScreen';
 
 const App=()=>{
   const[name,setNane]=useState(null)
-  
-
+ 
   useEffect(()=>{
     founduser()
   },[]);
