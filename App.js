@@ -1,8 +1,5 @@
 import React,{useEffect,useState}  from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  View,
-} from 'react-native';
 
 import Intro from './Apps/Screen/Intro';
 import MainScreen from './Apps/Screen/MainScreen';
@@ -15,7 +12,6 @@ const App=()=>{
 
   useEffect(()=>{
     founduser()
-    //AsyncStorage.clear(); 
   },[]);
   
   const founduser=async()=>{
