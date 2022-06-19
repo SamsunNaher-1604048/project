@@ -31,8 +31,7 @@ import Notes from '../Components/Notes';
         if(result!==null){
         setnotes(JSON.parse(result))
        }
-      //AsyncStorage.clear()
-     }
+      }
 
      const addnote=()=>{
        setmodel(true)
