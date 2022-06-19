@@ -27,10 +27,11 @@ import Notes from '../Components/Notes';
      }
 
      const getNotes=async()=>{
-        const result=await AsyncStorage.getItem('notes')
-        if(result!==null){
-        setnotes(JSON.parse(result))
-       }
+         const result=await AsyncStorage.getItem('notes')
+          if(result!==null){
+          setnotes(JSON.parse(result))
+        }
+      //AsyncStorage.clear()
       }
 
      const addnote=()=>{
@@ -56,6 +57,7 @@ import Notes from '../Components/Notes';
       <Text style={styles.head}>GOOD {greet} {props.name} </Text>
       <Search />
       {notes.map((item)=><Notes key={item.id} data={item}/>)}
+
       <View style={styles.notestyle}>
        {!notes.length?(<Text style={styles.notes}>Add Note</Text>):null}
         <Icon name='plus-circle' size={60} color='#dbb2ff' style={styles.plus} onPress={addnote} />
