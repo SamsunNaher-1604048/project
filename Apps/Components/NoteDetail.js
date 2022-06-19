@@ -4,7 +4,6 @@ import React from 'react'
 const NoteDetail = () => {
   return (
     <View>
-      <Text>NoteDetail</Text>
     </View>
   )
 }
