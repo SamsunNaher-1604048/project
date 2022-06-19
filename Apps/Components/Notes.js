@@ -1,22 +1,35 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import NoteDetail from './NoteDetail'
 
 const Notes = ({data}) => {
+  const[notedetail,setnotedetail]=useState(false);
+
+  const press=()=>{
+    setnotedetail(true)
+  }
+
   return (
-    <View>
-      <View style={styles.box}>
-        <Text numberOfLines={2} style={styles.title}>{data.title}</Text>
-        <Text numberOfLines={3} style={styles.des}>{data.des}</Text>
+    
+     <View>
+       <View>
+          <TouchableOpacity onPress={press}>
+            <View style={styles.box}>
+              <Text numberOfLines={2} style={styles.title}>{data.title}</Text>
+              <Text numberOfLines={3} style={styles.des}>{data.des}</Text>
+              <NoteDetail visibal={notedetail} note={data} onClose={()=>{setnotedetail(false)}}/>
+          </View> 
+        </TouchableOpacity>
       </View>
     </View>
-  )
+ )
 }
 
-export default Notes
+
 
 const styles = StyleSheet.create({
   box:{
-    height:140,
+    height:130,
     width:385,
     backgroundColor:'#dbb2ff',
     margin:10,
@@ -30,5 +43,6 @@ const styles = StyleSheet.create({
   des:{
     fontSize:17,
 
-  }
+  },
 })
+export default Notes;
