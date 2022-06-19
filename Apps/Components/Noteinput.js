@@ -1,78 +1,71 @@
 import React,{useState} from 'react'
+import { View, Text,StyleSheet,Modal,TextInput} from 'react-native'
 import Icon from "react-native-vector-icons/AntDesign";
-import { StyleSheet, View ,Modal,TextInput} from 'react-native'
 
+const Noteinput = ({visibal,onclose,onsubmit}) => {
+  const[title,Settitle]=useState('')
+  const[des,Setdes]=useState('')
+  
+  const Changetitle=(text)=>{
+    Settitle(text)
+  }
 
-const Noteinput = ({visible,onclose,onsubmit}) => {
+  const ChangeDes=(text)=>{
+    Setdes(text)
+  }
 
-    const [title,settitle]=useState('')
-    const[des,setdes]=useState('')
-
-    const changetitle=(text)=>{
-        settitle(text)
-    }
-
-    const changedes=(text)=>{
-        setdes(text)
-    }
-
-    const check=()=>{
-      if(title.trim()!=null && des.trim()!=null){
-        onsubmit(title,des)
-        settitle('')
-        setdes('')
-        onclose()
-      }
-    }
-
-
-    const close=()=>{
-      settitle('')
-      setdes('')
+  const submit=()=>{
+    if(title.trim() && des.trim()){
+      onsubmit(title,des);//sanding value to mainScreen
+      Settitle('')
+      Setdes('')
       onclose()
     }
+  }
+
+  const close=()=>{
+    Settitle('')
+    Setdes('')
+    onclose()
+  }
 
   return (
-    <Modal  visible={visible} animationType='fade'>
-        <View style={styles.container}>
-            <TextInput value={title} onChangeText={changetitle} placeholder='Title' style={[styles.input,styles.title]}/>
-            <TextInput value={des} onChangeText={changedes}  multiline  placeholder='Note' style={[styles.input,styles.des]}/>  
-            <View style={styles.icon}>
-                <Icon name='checkcircle' onPress={check} size={50} color='#dbb2ff'/>
-                <Icon name='closecircle' onPress={close} style={{marginLeft:15}} size={50}  color='#dbb2ff' />
-            </View>
-        </View>      
+    <Modal visible={visibal} animationType='slide'>
+      <View style={styles.container}>
+        <TextInput style={[styles.input,styles.title]} placeholder='Title' onChangeText={Changetitle} value={title}/>
+        <TextInput multiline style={[styles.input,styles.des]} placeholder='Description' onChangeText={ChangeDes} value={des}/> 
+
+        <View  style={styles.btncointainer}>
+          <Icon name='checkcircle'  size={45} color='#dbb2ff' style={{marginRight:20}} onPress={submit}/>
+          <Icon name='closecircle'  size={45} color='#dbb2ff'onPress={close}/>
+        </View>
+      </View>
     </Modal>
   )
 }
-
-export default Noteinput
-
-const styles = StyleSheet.create({
-
-    container:{
-        paddingHorizontal:20,
-        marginTop:20,
-        
-    },
-    input:{
-        borderBottomWidth:2,
-        borderBottomColor:'#dbb2ff',
-        fontSize:20,
-        color:'#1e1e1e',
-    },
-    title:{
-         height:40,
-         marginBottom:15,
-         fontWeight:'bold',
-    },
-    des:{
+const styles=StyleSheet.create({
+  container:{
+    paddingHorizontal:20,
+    paddingTop:15,
+  },
+  input:{
+    borderBottomWidth:2,
+    borderBottomColor:'#dbb2ff',
+    color:'#1e1e1e',
+    fontSize:20,
+  },
+  title:{
+    height:40,
+    marginBottom:15,
+    fontWeight:'bold',
+  },
+  des:{
     height:100,
-    },
-    icon:{
-        flexDirection:'row',
-        justifyContent:'center',
-        paddingVertical:15
-
-    },
+  },
+  btncointainer:{
+    flexDirection:'row',
+    justifyContent:'center',
+    paddingVertical:15,
+  }
 })
+export default Noteinput
