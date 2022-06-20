@@ -1,4 +1,4 @@
-import { View, Text,StyleSheet } from 'react-native'
+import { View, Text,StyleSheet,ScrollView,SafeAreaView} from 'react-native'
 import React,{useState,useEffect} from 'react'
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,7 +27,7 @@ import Notes from '../Components/Notes';
      }
 
      const getNotes=async()=>{
-         const result=await AsyncStorage.getItem('notes')
+          const result=await AsyncStorage.getItem('notes')
           if(result!==null){
           setnotes(JSON.parse(result))
         }
@@ -53,17 +53,22 @@ import Notes from '../Components/Notes';
 
      
   return (
-    <View style={styles.container}>
-      <Text style={styles.head}>GOOD {greet} {props.name} </Text>
-      <Search />
-      {notes.map((item)=><Notes key={item.id} data={item}/>)}
-
-      <View style={styles.notestyle}>
-       {!notes.length?(<Text style={styles.notes}>Add Note</Text>):null}
-        <Icon name='plus-circle' size={60} color='#dbb2ff' style={styles.plus} onPress={addnote} />
-      </View>
-      <Noteinput visibal={model} onclose={()=>{setmodel(false)}} onsubmit={shownote}/>
+    <SafeAreaView>
+      <View  style={styles.container}>
+      <ScrollView >
+        <Text style={styles.head}>GOOD {greet} {props.name} </Text>
+        <Search />
+        {notes.map((item)=><Notes key={item.id} data={item}/>)}
+        <View style={styles.notestyle}>
+          {!notes.length?(<Text style={styles.notes}>Add Note</Text>):null}
+        </View>
+        <Noteinput visibal={model} onclose={()=>{setmodel(false)}} onsubmit={shownote}/>
+        <View style={styles.btncontainer}>
+          <Icon name='plus-circle' size={60} color='#dbb2ff' style={styles.plus} onPress={addnote} />
+        </View>
+      </ScrollView>
     </View>
+    </SafeAreaView>
   )
 }
 const styles=StyleSheet.create({
@@ -74,7 +79,6 @@ const styles=StyleSheet.create({
   },
   container:{
     marginHorizontal:10,
-    flex:1
   },
   notes:{
     fontWeight:'bold',
@@ -83,13 +87,16 @@ const styles=StyleSheet.create({
   },
   notestyle:{
     justifyContent:'center',
-    flex:1,
     alignItems:'center'
+  },
+  btncontainer:{
+    paddingTop:70,
+
   },
   plus:{
     position:'absolute',
     right:20,
-    bottom:50
+    marginBottom:50
   },
 })
 export default MainScreen;  
