@@ -1,6 +1,6 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import NoteDetail from './NoteDetail'
+import NoteDetail from '../Screen/NoteDetail'
 
 const Notes = ({data}) => {
   const[notedetail,setnotedetail]=useState(false);
@@ -11,7 +11,7 @@ const Notes = ({data}) => {
 
   return (
     
-     <View>
+     <ScrollView>
        <View>
           <TouchableOpacity onPress={press}>
             <View style={styles.box}>
@@ -21,7 +21,7 @@ const Notes = ({data}) => {
           </View> 
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
  )
 }
 
@@ -34,13 +34,15 @@ const styles = StyleSheet.create({
     backgroundColor:'#dbb2ff',
     margin:10,
     padding:10,
-    borderRadius:10,
+    borderRadius:15,
   },
   title:{
     fontSize:22,
     fontWeight:'bold',
+    color:'white',
   },
   des:{
+    marginTop:8,
     fontSize:17,
 
   },
