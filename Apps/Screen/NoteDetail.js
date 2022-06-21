@@ -9,6 +9,7 @@ const NoteDetail = ({visibal,note,onClose}) => {
 
   const close=()=>{
     onClose()
+    console.log('close')
   };
 
   const formatDate=(time)=>{
