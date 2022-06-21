@@ -11,7 +11,7 @@ const Notes = ({data}) => {
 
   return (
     
-     <ScrollView>
+     <ScrollView style={styles.container}>
        <View>
           <TouchableOpacity onPress={press}>
             <View style={styles.box}>
@@ -28,6 +28,9 @@ const Notes = ({data}) => {
 
 
 const styles = StyleSheet.create({
+  container:{
+
+  },
   box:{
     height:130,
     width:385,
