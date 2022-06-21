@@ -17,7 +17,7 @@ import Notes from '../Components/Notes';
      useEffect(()=>{
        findgreet()
        getNotes()
-     },[])
+     },[notes])
 
      const findgreet=()=>{
        const hrs = new Date().getHours()
