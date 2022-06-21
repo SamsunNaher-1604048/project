@@ -60,8 +60,6 @@ const NoteDetail = ({visibal,note,onClose}) => {
         <Text style={styles.des}>{note.des}</Text>
        <View style={styles.btncontainer}>
        <Icon name='closecircle'  size={45} color='#dbb2ff' onPress={close} style={styles.close}/>
-       <Icon name='delete'  size={45} color='#dbb2ff' onPress={displaydeletealert} style={styles.close}/>
-       <Icon name='edit'  size={45} color='#dbb2ff' onPress={close}/>
        </View>
       </ScrollView>
     </Modal>
@@ -92,6 +90,7 @@ const styles = StyleSheet.create({
     opacity:0.6,
   },
   btncontainer:{
+    marginTop:80,
     flexDirection:'row',
     justifyContent:'center',
     marginTop:50,
