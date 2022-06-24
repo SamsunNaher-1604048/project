@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { View, Text,StyleSheet,Modal,TextInput} from 'react-native'
 import Icon from "react-native-vector-icons/AntDesign";
 
-const Noteinput = ({visibal,onclose,onsubmit}) => {
-  const[title,Settitle]=useState('')
-  const[des,Setdes]=useState('')
+const Noteinput = ({visibal,onclose,onsubmit,note,isedit}) => {
+  const[title,Settitle]=useState()
+  const[des,Setdes]=useState()
+  const[edit,setedit]=useState(isedit)
+
   
   const Changetitle=(text)=>{
     Settitle(text)
@@ -28,6 +30,13 @@ const Noteinput = ({visibal,onclose,onsubmit}) => {
     Setdes('')
     onclose()
   }
+
+  useEffect(()=>{
+    if(edit){
+      Setdes(note.des);
+      Settitle(note.title)
+    }
+  },[edit])
 
   return (
     <Modal visible={visibal} animationType='slide'>

@@ -1,11 +1,15 @@
 import { StyleSheet,Modal,View ,Text,ScrollView ,SafeAreaView,Alert} from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Icon from "react-native-vector-icons/AntDesign";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+import Noteinput from '../Components/Noteinput';
+
+
 
 const NoteDetail = ({visibal,note,onClose}) => {
+  const[model,setmodel]=useState(false)
 
   const close=()=>{
     onClose()
@@ -33,6 +37,10 @@ const NoteDetail = ({visibal,note,onClose}) => {
      onClose()
   }
 
+  const edit=()=>{
+    setmodel(true)
+  }
+
 
 
   const displaydeletealert=()=>{
@@ -49,6 +57,13 @@ const NoteDetail = ({visibal,note,onClose}) => {
     ])
   }
 
+  const handleOnClose=()=>{
+    setmodel(false)
+  }
+  const onHendelSubmit=()=>{
+    
+  }
+
 
   return (
     <SafeAreaView>
@@ -60,12 +75,12 @@ const NoteDetail = ({visibal,note,onClose}) => {
        <View style={styles.btncontainer}>
        <Icon name='closecircle'  size={45} color='#dbb2ff' onPress={close} style={styles.close}/>
        <Icon name='delete'  size={45} color='#dbb2ff' onPress={displaydeletealert} style={styles.close}/>
-       <Icon name='edit'  size={45} color='#dbb2ff' onPress={close}/>
+       <Icon name='edit'  size={45} color='#dbb2ff' onPress={edit}/>
        </View>
       </ScrollView>
+      <Noteinput visibal={model} onclose={handleOnClose} note={note} isedit={true} onsubmit={onHendelSubmit}/>
     </Modal>
     </SafeAreaView>
-    
   )
 }
 
