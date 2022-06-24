@@ -9,7 +9,7 @@ const NoteDetail = ({visibal,note,onClose}) => {
 
   const close=()=>{
     onClose()
-    console.log('close')
+   
   };
 
   const formatDate=(time)=>{
@@ -44,7 +44,6 @@ const NoteDetail = ({visibal,note,onClose}) => {
       {
         text:'No Thanks',
         onPress:()=>{
-           console.log('no')
         }
       }
     ])
